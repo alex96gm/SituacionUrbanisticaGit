@@ -1,0 +1,59 @@
+	
+.azul:focus {box-shadow: 0 0 5px rgba(0,0,255,1);border:1px solid rgba(0,0,255,0.8);}
+#rojo:focus {box-shadow: 0 0 5px rgba(255,0,0,1);border:1px solid rgba(255,0,0,0.8);}
+.naranja:focus {box-shadow: 0 0 5px rgba(230,95,0,1);border:1px solid rgba(230,95,0,0.8);}
+.verde:focus {box-shadow: 0 0 5px rgba(0,255,0,1);border:1px solid rgba(0,255,0,0.8);}
+
+
+textarea{
+	overflow-y:scroll;
+	resize:none;
+}
+#titulo{
+	padding-top:14px;
+}
+
+#subpanel_propietarios{
+	margin-left:15px;
+	margin-right:15px;
+}
+.lisPropi{
+	 max-height: 210px;
+}
+.list-group{
+	 max-height: 190px;
+	overflow-y: scroll;
+}
+.checkboxDesglose{
+	padding-top: 33px;
+}
+
+#boton{
+height: 30px;
+width: 30px;
+}
+
+.text-xs,.alert-danger{
+	margin-bottom: 0px;
+}
+.btnAñadir{
+	margin-top: 25px;
+}
+.alert-danger{
+	text-align: center;
+}
+.inputSared{
+	border:none;
+}
+.table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+    border-bottom: 0px;
+
+}
+.table-condensed>tbody>tr>td{
+	padding: 0px;
+}
+.table>tbody>tr>td,th{
+	text-align: center;
+	vertical-align: middle;
+}

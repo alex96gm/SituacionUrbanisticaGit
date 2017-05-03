@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Situación URBANÍSTICA</title>
+
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="fonts\font-awesome-4.7.0\css\font-awesome.min.css" rel="stylesheet">
+	<!-- CSS -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="añadirOpciones">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+		</div>
+	</nav>
+
+	<br><br><br>
+	<section class="wrap" id="contenedor">
+		<div class="container">
+			<!--SITUACION URBANISTICA -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-primary " ng-controller="controlarOpciones">
+						<div ng-hide="icono" ng-click="icono=true" class="panel-heading " role="button" data-toggle="collapse" href="#collapseSituacionUrbanistica">
+							<div class="row">
+								<div class="col-sm-9">
+									SITUACIÓN URBANÍSTICA
+								</div>
+								<div class="col-sm-3">
+									<i class="fa fa-plus-square-o fa-2x pull-right" aria-hidden="false"></i>
+								</div>
+							</div>
+						</div>
+
+
+						<div ng-show="icono" ng-click="icono=false" class="panel-heading " role="button" data-toggle="collapse" href="#collapseSituacionUrbanistica">
+							<div class="row">
+								<div class="col-sm-9">
+									SITUACIÓN URBANÍSTICA
+								</div>
+								<div class="col-sm-3">
+									<i class="fa fa-minus-square-o fa-2x pull-right" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class=" panel-body collapse" id="collapseSituacionUrbanistica" ng-controller="controlarOpciones">
+							<form ng-submit="expression">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="" class="control-label">CONCEPTO</label>
+											<input ng-blur="" ng-model="nuevaOpcion" type="text" class="form-control" id="userIdType" list="conceptos">
+											<datalist id="conceptos">
+												<option ng-repeat="defecto in opcionesDataList" value="{{defecto}}"></option>
+											</datalist>
+
+											<br>
+											<div class="form-group">
+												<label for="" class="control-label">DESCRIPCIÓN </label>
+												<textarea ng-model="nuevaDescripcion" class="form-control ttarea" placeholder="Escriba aqui una breve descripción" rows="5"></textarea>
+											</div>
+											<button ng-click="agregarOpcion()" class="btn btn-success btn-md pull-right añadir" type="submit">Añadir Concepto</button>
+										</div>
+
+									</div>
+									<div class="col-sm-6">
+										<label for="" class="control-label"></label>
+										<ul class="list-group list-primary " class="list-unstyled">
+											<li class="list-group-item" ng-repeat="opcion in opcionesLista track by $index">
+												<div class="row" ng-click="edit=false">
+													<div class="col-sm-11">
+														<span><strong>{{opcion.concepto}}</strong></span>
+													</div>
+													<div class="col-sm-1">
+														<button ng-click='eliminarOpcion($index)' type="button" class="btn btn-danger btn-xs pull-right">
+															<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+														</button>
+													</div>
+												</div>
+												<div ng-click="edit=true" ng-hide="edit">
+													{{opcion.descripcion}}
+
+												</div>
+
+												<div class="row" ng-show="edit">
+													<br>
+													<div class="col-sm-11">
+
+														<textarea ng-model="opcion.descripcion" autofocus ng-blur="" class="form-control" id="" cols="1" rows="2"></textarea>
+													</div>
+													<div class="col-sm-1">
+														<button ng-click='edit=false' type="button" class="btn btn-success btn-xs pull-right">
+															<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+														</button>
+													</div>
+												</div>
+
+											</li>
+										</ul>
+										<span class="text-info">* Haz click en la descripción para editar</span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END PANEL SITUACION URBANISTICA -->
+			<!-- PANEL PROPIETARIOS -->
+			<div ng-controller="controlarDatosTendencia" class="panel panel-primary ">
+				<div ng-hide="icono" ng-click="icono=true" class="panel-heading " role="button" data-toggle="collapse" href="#collapsTendencia">
+					<div class="row">
+						<div class="col-sm-9">
+							TENDENCIA, OCUPACIÓN Y LIMITACIONES
+						</div>
+						<div class="col-sm-3">
+							<i class="fa fa-plus-square-o fa-2x pull-right" aria-hidden="false"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<div ng-show="icono" ng-click="icono=false" class="panel-heading " role="button" data-toggle="collapse" href="#collapsTendencia">
+					<div class="row">
+						<div class="col-sm-9">
+							TENDENCIA, OCUPACIÓN Y LIMITACIONES
+						</div>
+						<div class="col-sm-3">
+							<i class="fa fa-minus-square-o fa-2x pull-right" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body collapse" id="collapsTendencia">
+					<div class="row">
+						<div class="col-sm-6">
+							<form>
+								<div class="form-group">
+									<label for="" class="control-label">TIPO DE PROPIEDAD</label>
+									<select class="form-control">
+											<optgroup label="Grupo 1">
+												<option  ng-repeat="prop in tipoPropiedad" value=" ">{{prop}}</option>
+											</optgroup>
+											<optgroup label="Grupo 2">
+												<option  ng-repeat="prop in tipoPropiedad" value=" ">{{prop}}</option>		
+											</optgroup>
+										</select>
+								</div>
+								<div class="form-group">
+									<label for="" class="control-label">OCUPADO</label>
+									<select class="form-control">														
+											<option  ng-repeat="ocup in ocupado" value=" ">{{ocup}}</option>														
+										</select>
+								</div>
+								<div class="form-group">
+									<label for="" class=" control-label">DESTINO PREVISTO</label>
+									<select class="form-control">
+												<option ng-repeat="destino in destinoPrevisto" value=" ">{{destino}}</option>
+											</select>
+								</div>
+								<div class="form-group">
+									<label for="" class="control-label">CONTRATO DE ARRENDAMIENTO</label>
+									<select class="form-control">
+											<option ng-repeat="contrato in contratoArrendamiento" value=" ">{{contrato}}</option>
+										</select>
+								</div>
+							</form>
+						</div>
+						<div class="col-sm-6">
+							<form>
+								<div class="form-group">
+									<label for="" class="control-label">TIPO DE PROPIEDAD (En detalle)</label>
+									<textarea class="form-control" placeholder="Escriba aqui una breve descripción" rows="4"></textarea>
+								</div>
+								<div class="form-group" id="titulo">
+									<label for="" class="control-label">TÍTULO DE OCUPACIÓN</label>
+									<select class="form-control" ng-disabled="true">
+											<option ng-repeat="titulo in tituloOcupacion" value=" ">{{titulo}}</option>
+										</select>
+								</div>
+								<label class="checkbox-inline checkboxDesglose pull-right"><input type="checkbox" id="most_propietarios"value="" name="desglose_propietarios">Mostrar desglose de propietarios</label>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- SUBMENU PROPIETARIOS -->
+				<div class="panel panel-primary hidden" id="subpanel_propietarios">
+					<div class="panel-heading ">
+						PROPIETARIOS
+					</div>
+					<div class="panel-body ">
+						<form>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="" class="control-label">CIF/NIF</label>
+										<input ng-model="cif_nif" type="text" class="form-control" id="" value="">
+									</div>
+									<div class="form-group">
+										<label for="" class="control-label">PORCENTAJE DE PROPIEDAD (%)</label>
+										<input ng-model="porcentaje" type="number" class="form-control" id="" value="">
+									</div>
+									<div class="form-group">
+										<label for="" class="control-label">PROPIETARIOS</label>
+										<input ng-model="nombre" type="text" class="form-control" id="" value="">
+									</div>
+									<button ng-click="agregarPropietario()" class="btn btn-success btn-md pull-right añadir" type="submit">Añadir Propietario</button>
+								</div>
+								<div class="col-sm-6">
+									<label for="" class="control-label"></label>
+									<ul class="list-group list-primary lisPropi" class="list-unstyled">
+										<li class="list-group-item" ng-repeat="propiet in propietarios track by $index">
+											<div class="row">
+												<div class="col-sm-6">
+													<div>
+														<strong>CIF/NIF: </strong>{{propiet.cif_nif}}
+													</div>
+													<div>
+														<strong>Porcentaje de propiedad: </strong>{{propiet.porcentaje}}%
+													</div>
+													<div>
+														<strong>Propietario: </strong>{{propiet.nombre}}
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<button ng-click='eliminarPropietario($index)' type="button" class="btn btn-danger btn-xs pull-right">x</button>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- END SUBMENU PROPIETARIOS -->
+			</div>
+			<!-- DATOS DE CARGA SAREB  -->
+			<div class="panel panel-primary " ng-controller="TablaCtrl">
+				<div ng-hide="icono" ng-click="icono=true" class="panel-heading " role="button" data-toggle="collapse" href="#collapseCargaSareb">
+					<div class="row">
+						<div class="col-sm-9">
+							DATOS DE CARGA SAREB
+						</div>
+						<div class="col-sm-3">
+							<i class="fa fa-plus-square-o fa-2x pull-right" aria-hidden="false"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<div ng-show="icono" ng-click="icono=false" class="panel-heading " role="button" data-toggle="collapse" href="#collapseCargaSareb">
+					<div class="row">
+						<div class="col-sm-9">
+							DATOS DE CARGA SAREB
+						</div>
+						<div class="col-sm-3">
+							<i class="fa fa-minus-square-o fa-2x pull-right" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-body collapse" id="collapseCargaSareb" >
+					<table class="table table-bordered  table-condensed table-responsive">
+						<thead>
+							<th>Nº</th>
+							<th>TIPO DE CARGA</th>
+							<th>DESCRIPCIÓN</th>
+							<th>NIF</th>
+							<th>IMPORTE</th>
+							<th>ENTIDAD</th>
+							<th>FECHA INICIO</th>
+							<th>FECHA FIN</th>
+							<th>RANGO</th>
+							<th id="boton">
+								<label class="text-xs text-danger">
+										<span class="glyphicon glyphicon-remove"></span></label>
+							</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in listaSareb track by $index">
+								<td class="idtd"><strong>{{$index + 1}}</strong> </td>
+								<td>
+									<input ng-model="item.tipoCarga" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.descripcion" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.nif" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.importe" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.entidad" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.fechaIni" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.fechaFin" type="text" class="form-control inputSared">
+								</td>
+								<td>
+									<input ng-model="item.rango" type="text" class="form-control inputSared">
+								</td>
+								<td class="idtd">
+									<button ng-click='eliminar($index)' type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="pull-right">
+						<button ng-click='agregarRow(nuevaFila)' class="btn btn-success btnAñadir" type="button">Añadir Nuevo Registro</button>
+					</div>
+				</div>
+			</div>
+			<!-- DATOS DE CARGA SAREB  -->
+		</div>
+	</section>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/Situ_Urba.js"></script>
+</body>
+
+</html>
