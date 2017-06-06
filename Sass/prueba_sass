@@ -1,17 +1,6 @@
 $padding: 6px;
+$color:red;
 
-nav {
-  ul {
-    margin: 0;
-    padding: $padding;
-    list-style: none;
-  }
-
-  li { display: inline-block; }
-
-  a {
-    display: block;
-    padding: $padding 12px;
-    text-decoration: none;
-  }
+body{
+  background-color: $color;
 }
